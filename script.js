@@ -4,7 +4,7 @@ async function bookCar() {
     const toDate = document.getElementById('toDate').value;
 
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/bookCar', {
+        const response = await fetch('https://car-service-7paz.onrender.com/api/bookCar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ async function bookCar() {
 
 async function fetchBookings() {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/bookings');
+        const response = await fetch('https://car-service-7paz.onrender.com/api/bookings');
         const bookings = await response.json();
         const bookingList = document.getElementById('booking-list');
 
@@ -47,7 +47,7 @@ async function fetchBookings() {
 
 async function deleteBooking(id) {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/api/bookings/${id}`, {
+        const response = await fetch(`https://car-service-7paz.onrender.com/api/bookings/${id}`, {
             method: 'DELETE',
         });
 
@@ -91,4 +91,4 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-}); 
+});
