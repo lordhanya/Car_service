@@ -1,3 +1,6 @@
+// Load environment variables
+require('dotenv').config();
+
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
@@ -5,18 +8,18 @@ const cors = require('cors');
 const moment = require('moment-timezone');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000; // Use PORT from .env
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-// MySQL connection
+// MySQL connection using environment variables
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'md-ashif', // replace with your MySQL username
-    password: '@ARahman0622', // replace with your MySQL password
-    database: 'symphony' // replace with your database name
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 // Connect to MySQL
@@ -33,7 +36,7 @@ app.post('/api/bookCar', (req, res) => {
     const { car, fromDate, toDate } = req.body;
     
     // Convert to your timezone
-    const from = moment(fromDate).tz('Asia/Kolkata').format(); // e.g., 'Asia/Kolkata'
+    const from = moment(fromDate).tz('Asia/Kolkata').format(); 
     const to = moment(toDate).tz('Asia/Kolkata').format();
 
     const query = 'INSERT INTO bookings (car, from_date, to_date) VALUES (?, ?, ?)';
@@ -59,7 +62,7 @@ app.get('/api/bookings', (req, res) => {
         const bookings = results.map(booking => ({
             id: booking.id,
             car: booking.car,
-            from_date: moment(booking.from_date).tz('Asia/Kolkata').format('YYYY-MM-DD'), // Format as needed
+            from_date: moment(booking.from_date).tz('Asia/Kolkata').format('YYYY-MM-DD'),
             to_date: moment(booking.to_date).tz('Asia/Kolkata').format('YYYY-MM-DD')
         }));
 
