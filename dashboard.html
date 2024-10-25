@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYMPHONY | md-ashif</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <a class="logo">SYMPHONY</a>
+        <h1 class="typewriter-title" id="typewriter"></h1>
+    </header>
+    <main>
+        <section class="manager-login">
+            <button class="redirect-button" id="managerButton">Manager Login</button>
+        </section>
+        <section class="staff-login">
+            <button class="redirect-button" id="staffButton">Staff Member</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 MD ASHIF RAHMAN | All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const text = "Welcome to Symphony Car Service";
+        const typewriterElement = document.getElementById("typewriter");
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                typewriterElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 100); // Adjust typing speed here (in milliseconds)
+            }
+        }
+
+        window.onload = type; // Start typing on window load
+
+        // Redirect for Manager Login button
+        document.getElementById("managerButton").addEventListener("click", function() {
+            window.location.href = 'login.html'; // Specify the target file for Manager
+        });
+
+        // Redirect for Staff Member button
+        document.getElementById("staffButton").addEventListener("click", function() {
+            window.location.href = 'staff.html'; // Specify the target file for Staff Member
+        });
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>

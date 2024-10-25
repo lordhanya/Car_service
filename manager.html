@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <a class="logo">SYMPHONY</a>
+        <h1 class="typewriter-title" id="typewriter"></h1> <!-- Updated here -->
+    </header>
+    <main>
+        <section class="booking-form">
+            <h2 id="book-a-car">Book a Car</h2>
+            <form id="car-booking" onsubmit="return bookCar();">
+                <label for="car">Select Car:</label>
+                <select id="car" name="car" required>
+                    <option value="select">--------Select-------</option>
+                    <option value="Honda Civic">Honda Civic</option>
+                    <option value="Maruti Ertiga">Maruti Ertiga</option>
+                    <option value="Toyota Innova">Toyota Innova</option>
+                </select>
+    
+                <label for="fromDate">From-Date:</label>
+                <input type="date" id="fromDate" name="fromDate" required>
+    
+                <label for="toDate">To-Date:</label>
+                <input type="date" id="toDate" name="toDate" required>
+            </form>
+        </section>
+    
+        <section class="button-section">
+            <button type="button" class="book-now-btn">Book Now</button>
+            <button class="see-bookings-btn">See Bookings</button>
+        </section>
+    
+        <section class="booking-list">
+            <h2 id="booked_cars">Booked Cars</h2>
+            <ul id="booking-list">
+                <!-- Booking list items will be dynamically populated here -->
+            </ul>
+        </section>
+    </main>
+
+        
+    <footer>
+        <p>&copy; 2024 MD ASHIF RAHMAN | All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const text = "Welcome to Symphony Car Service";
+        const typewriterElement = document.getElementById("typewriter");
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                typewriterElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, 100); // Adjust typing speed here (in milliseconds)
+            }
+        }
+
+        window.onload = type; // Start typing on window load
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
