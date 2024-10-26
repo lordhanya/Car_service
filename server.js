@@ -11,7 +11,13 @@ const app = express();
 const PORT = process.env.PORT || 5000; // Use PORT from .env
 
 // Middleware
-app.use(cors());
+app.use(cors(
+    {
+        origin: ["https://car-service-7paz.onrender.com"],
+        methods:["POST", "GET"],
+        crendentials: true
+    }
+));
 app.use(bodyParser.json());
 
 // MySQL connection using environment variables
