@@ -34,6 +34,12 @@ db.connect(err => {
     console.log('Connected to the database.');
 });
 
+// Add this route at the top of your existing routes
+app.get('/', (req, res) => {
+    res.send('Welcome to the Car Service API!');
+});
+
+
 // Endpoint to book a car
 app.post('/api/bookCar', (req, res) => {
     const { car, fromDate, toDate } = req.body;
